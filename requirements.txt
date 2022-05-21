@@ -1,4 +1,4 @@
-﻿aiohttp==3.7.4.post0
+
 aiosqlite==0.17.0
 animec==0.4.2
 asgiref==3.5.0
@@ -22,7 +22,7 @@ docopt==0.6.2
 easy==0.0.4
 easy-pil==0.1.6
 
-idna==3.3
+
 itsdangerous==2.1.2
 
 MarkupSafe==2.1.1
@@ -38,7 +38,7 @@ sh==1.14.2
 soupsieve==2.3.2.post1
 sqlparse==0.4.2
 toml==0.10.2
-typing_extensions==4.2.0
+
 tzdata==2022.1
 urllib3==1.26.9
 Werkzeug==2.1.1
