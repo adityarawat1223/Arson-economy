@@ -1,0 +1,38 @@
+@commands.command(aliases=("bal"))
+    async def bal(self,ctx,user:discord.member = None):
+        author = ctx.author
+
+        check = await Arson.find_one({"id"})
+
+  intents=discord.Intents.all(),
+
+
+  async def create_db_pool(self):
+        
+        self.db = await asyncpg.create_pool(database ="Arson economy" , user = "postgres", password = "aditya1200")
+        print("Connection Ho gya")
+
+
+ @commands.command()
+    @commands.cooldown(1, 60 , type = commands.BucketType.user)
+    async def hunt(self,ctx):
+        author = ctx.author.id
+        user = await self.bot.db.fetch("SELECT * FROM users WHERE id = $1",author)
+        if not user:
+            await ctx.reply("Imagine Trying to play without a profile , Someone needs a memory pill")
+
+        else:
+            huntk = random.choice(animals)
+            if huntk == None:
+                await ctx.reply("You found Nothing , Dont Be sad atleast you are alive ")
+
+            else:
+                await self.plus(ctx.author.id,huntk,ctx)
+                await ctx.reply(F"Good Job You Found a wild {huntk}")
+
+
+embed=discord.Embed(title=f"{interaction.user.name}'s Inventory ", description="")
+        for element in lol:
+            embed.add_field(name=element.get("item_name", "no name"), value=element.get("count", "NaN"), inline= False)
+        await interaction.followup.send(embed=embed)
+bed=discord.Embed(title=f"{interaction.user.name}'s Inventory ", description=f"{element.get('item_name', 'no name')} - {element.get('count', 'NaN')}")
