@@ -32,7 +32,7 @@ Pillow==8.4.0
 pipreqs==0.4.11
 pycodestyle==2.8.0
 pymongo==4.1.1
-PyYAML==3.11
+
 requests==2.27.1
 sh==1.14.2
 soupsieve==2.3.2.post1
@@ -44,4 +44,4 @@ urllib3==1.26.9
 Werkzeug==2.1.1
 yarg==0.1.9
 yarl==1.7.2
-youtube-dl==2021.12.17
+
