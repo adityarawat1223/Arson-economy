@@ -31,6 +31,7 @@ class play(commands.Cog):
         else:
             
             huntk = random.choice(animals)
+            print(huntk)
             
             if huntk == None:
                 await interaction.followup.send("You found Nothing , Dont Be sad atleast you are alive ")
@@ -39,7 +40,7 @@ class play(commands.Cog):
                 item = await self.bot.db.fetchval("SELECT item_id FROM item_info WHERE item_name = $1", huntk)
                 emote = await self.bot.db.fetchval("SELECT emote_id FROM item_info WHERE item_name = $1", huntk)
                 
-                await self.bot.db.execute("INSERT INTO user_inventory (user_id,item_id,count,emote_id) VALUES($1,$2,$3,$4) ON CONFLICT (user_id,item_id) DO UPDATE SET count = user_inventory.count + 1",author,item,1,emote)
+                await self.bot.db.execute("INSERT INTO user_inventory (user_id,item_id,count) VALUES($1,$2,$3) ON CONFLICT (user_id,item_id) DO UPDATE SET count = user_inventory.count + 1",author,item,1)
                 embed = discord.Embed(colour = 000000,description=f"Congratulation You got A {huntk} {emote}")
                 await interaction.followup.send(embed=embed)
 
