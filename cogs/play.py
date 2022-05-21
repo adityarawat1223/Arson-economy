@@ -19,7 +19,7 @@ class play(commands.Cog):
 
     @app_commands.command(name="hunt", description="hunt some magical beast in jungle")
     @app_commands.guild_only()
-    #@app_commands.checks.cooldown(1, 30.0, key=lambda i: (i.guild_id, i.user.id))
+    @app_commands.checks.cooldown(1, 30.0, key=lambda i: (i.guild_id, i.user.id))
     async def anime(self, interaction: discord.Interaction) -> None:
         await interaction.response.defer(ephemeral=False, thinking=True)
         author = interaction.user.id
