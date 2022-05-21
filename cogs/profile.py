@@ -1,4 +1,4 @@
-from ast import alias
+
 import discord
 from discord import File
 from discord import Embed, Interaction, app_commands
@@ -7,9 +7,9 @@ from discord.ext import commands
 
 
 
-from PIL import Image
-from io import BytesIO
-from easy_pil import Editor, load_image_async, Font
+
+
+
 
 
 class anime(commands.Cog):

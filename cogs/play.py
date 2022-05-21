@@ -1,4 +1,4 @@
-from ast import alias
+
 import random
 import discord
 from discord import File
