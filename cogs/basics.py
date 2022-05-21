@@ -66,11 +66,11 @@ class basics(commands.Cog):
         await interaction.response.defer(ephemeral=False, thinking=True)
         
         author = interaction.user.id
-        lol = await self.bot.db.fetch("SELECT item_info.item_name,user_inventory.count,user_inventory.emote_id FROM user_inventory INNER JOIN item_info USING(item_id) WHERE  user_inventory.user_id = $1",author)
+        lol = await self.bot.db.fetch("SELECT item_info.item_name,user_inventory.count,user_inventory.emote FROM user_inventory INNER JOIN item_info USING(item_id) WHERE  user_inventory.user_id = $1",author)
         embed=discord.Embed(title=f"{interaction.user.name}'s Inventory " , description="")
             
         for element in lol:
-            embed.description += f"{element.get('emote_id', 'no id')} {element.get('item_name', 'no name')} - {element.get('count', 'NaN')}\n"
+            embed.description += f"{element.get('emote', 'no id')} {element.get('item_name', 'no name')} - {element.get('count', 'NaN')}\n"
         await interaction.followup.send(embed=embed)
 # end
 async def setup(bot) -> None:

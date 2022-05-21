@@ -5,8 +5,8 @@ from discord import File
 from discord import Embed, Interaction, app_commands
 from discord.ext import commands
 
-animals = ["Bird", "Deer", None, "Insect",  None,None, " Insect",  None,"Deer", None,"Rabbit" , "Bird", "Deer" , "Insect","Rabbit" , None, "Bird", "Deer",  None, "Insect","Rabbit" ,  None,"Bird", "Deer" , "Insect",
-           "Bird", None, "Gamabunta", "Rabbit", None, "Rabbit", None, None , "Rabbit" , "Bird", "Deer" , "Insect""Rabbit" ,  None,"Bird", "Deer" , "Insect", None]
+animals = ["Bird", "Deer", None, "Insect",  None,None, "Insect",  None,"Deer", None,"Rabbit" , "Bird", "Deer" , "Insect","Rabbit" , None, "Bird", "Deer",  None, "Insect","Rabbit" ,  None,"Bird", "Deer" , "Insect",
+           "Bird", None, "Gamabunta", "Rabbit", None, "Rabbit", None, None , "Rabbit" , "Bird", "Deer" , "Insect","Rabbit" ,  None,"Bird", "Deer" , "Insect", None]
 
 
 
@@ -19,7 +19,7 @@ class play(commands.Cog):
 
     @app_commands.command(name="hunt", description="hunt some magical beast in jungle")
     @app_commands.guild_only()
-    @app_commands.checks.cooldown(1, 30.0, key=lambda i: (i.guild_id, i.user.id))
+    #@app_commands.checks.cooldown(1, 30.0, key=lambda i: (i.guild_id, i.user.id))
     async def anime(self, interaction: discord.Interaction) -> None:
         await interaction.response.defer(ephemeral=False, thinking=True)
         author = interaction.user.id
@@ -40,7 +40,7 @@ class play(commands.Cog):
                 item = await self.bot.db.fetchval("SELECT item_id FROM item_info WHERE item_name = $1", huntk)
                 emote = await self.bot.db.fetchval("SELECT emote_id FROM item_info WHERE item_name = $1", huntk)
                 
-                await self.bot.db.execute("INSERT INTO user_inventory (user_id,item_id,count) VALUES($1,$2,$3) ON CONFLICT (user_id,item_id) DO UPDATE SET count = user_inventory.count + 1",author,item,1)
+                await self.bot.db.execute("INSERT INTO user_inventory (user_id,item_id,count,emote) VALUES($1,$2,$3,$4) ON CONFLICT (user_id,item_id) DO UPDATE SET count = user_inventory.count + 1",author,item,1,emote)
                 embed = discord.Embed(colour = 000000,description=f"Congratulation You got A {huntk} {emote}")
                 await interaction.followup.send(embed=embed)
 
